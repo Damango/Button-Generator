@@ -101,7 +101,9 @@ let theColor2 = `rgba(${r2}, ${g2}, ${b2}, ${a})`
 
 
 hoverStyle = {
-    backgroundColor: theColor2
+    backgroundColor: theColor2,
+    fontFamily: newStyle.fontFamily,
+    fontWeight: newStyle.fontWeight
 };
 
 
