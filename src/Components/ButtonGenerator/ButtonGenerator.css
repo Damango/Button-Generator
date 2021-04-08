@@ -1,0 +1,77 @@
+.button-generator-container {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+}
+
+.button-editor {
+	position: relative;
+	width: 20%;
+	height: 100%;
+	background-color: pink;
+	float: left;
+}
+
+.button-viewer {
+	position: relative;
+	width: 80%;
+	height: 100%;
+	background-color: white;
+	float: right;
+}
+
+.generate-button {
+	position: absolute;
+	bottom: 50px;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 10px 20px;
+	border-style: none;
+	font-family: "Open Sans";
+	font-weight: bold;
+	font-size: 23px;
+	background-color: #3742fa;
+	color: white;
+	transition: 0.3s;
+}
+
+.generate-button:hover {
+	cursor: pointer;
+	background-color: #1c25d4;
+}
+
+.fonts-drop-down-container {
+	position: relative;
+}
+
+.selected-font {
+	position: relative;
+	padding: 8px 15px;
+	background-color: white;
+	width: 120px;
+	transition: 0.3s;
+}
+
+.selected-font:hover {
+	cursor: pointer;
+	background-color: rgb(187, 187, 187);
+}
+
+.drop-down-list {
+	position: absolute;
+	width: 120px;
+	top: 35px;
+	left: 0px;
+}
+
+.font-list-item {
+	padding: 8px 15px;
+	background-color: white;
+	width: 120px;
+	transition: 0.3s;
+}
+
+.font-list-item:hover {
+	cursor: pointer;
+	background-color: gray;
+}

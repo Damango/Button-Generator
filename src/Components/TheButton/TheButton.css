@@ -1,0 +1,22 @@
+.the-button-container {
+	background-color: gray;
+	display: inline-block;
+	padding: 8px 30px;
+	color: white;
+	position: relative;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	font-family: Roboto;
+	font-size: 23px;
+	text-align: center;
+	transition: 0.3s;
+}
+
+.the-button-container:hover {
+	cursor: pointer;
+}
+
+.the-button-container span {
+	margin-right: 10px;
+}
