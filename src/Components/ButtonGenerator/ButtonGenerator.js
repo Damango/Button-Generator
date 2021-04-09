@@ -124,9 +124,15 @@ function renderDropDown(){
 
 
     let fonts = ['Poppins','Roboto','Montserrat', 'Kanit', 'Open Sans']
+    let i;
+    for(i = 0; i <fonts.length; i++){
+        if(fonts[i] === buttonStyles.fontFamily){
+            fonts.splice(i,1)
+        }
+    }
 
     if(fontDropDown === 1){
-        return(fonts.map((font) =><div className="font-list-item">{font}</div>))
+        return(fonts.map((font) =><div className="font-list-item" onClick={() => {changeFont(font)}}>{font}</div>))
     }
 
     else{
@@ -134,6 +140,22 @@ function renderDropDown(){
     }
 
   
+
+}
+
+
+function changeFont(font){
+
+    let oldStyle = buttonStyles;
+    let newFont = {
+        fontFamily: font
+    }
+
+    let newObject = Object.assign({},oldStyle, newFont)
+
+
+
+    setButtonStyles(newObject)
 
 }
 
@@ -171,10 +193,11 @@ function changeClass(path){
         <div className="button-editor">
             <h1>Button Text</h1>
             <input onInput={applyButtonText} placeholder="Enter Button Text" className="button-text-input"/>
-   
+            <h1>Background Color</h1>
+            <div>{buttonStyles.backgroundColor}</div>
             <h1>Button Font</h1>
             <div className="fonts-drop-down-container">
-            <div className="selected-font" onClick={() => {if(fontDropDown === 0){setFontDropDown(1)} else{setFontDropDown(0)}}}>{'FUCK'}  <div className="drop-down-list">{renderDropDown()}</div></div>
+            <div className="selected-font" onClick={() => {if(fontDropDown === 0){setFontDropDown(1)} else{setFontDropDown(0)}}}>{buttonStyles.fontFamily}  <div className="drop-down-list">{renderDropDown()}</div></div>
            
             </div>
        
