@@ -7,17 +7,19 @@ const ButtonGenerator = (props) => {
 
     const [theButtonText, setTheButtonText] = useState('Text');
     const [buttonStyles, setButtonStyles] = useState({
-        backgroundColor: 'gray',
+        backgroundColor: 'rgba(127, 140, 141,1.0)',
         fontFamily: "Roboto",
         fontWeight: 500,
-        border: 'none',
+        border: '0px solid transparent',
         borderRadius: 0, 
         transition: 0.3
     })
 
     const [hoverStyle, setHoverStyle] = useState()
     const [baseStyle, setBaseStyle] = useState()
+    const [prevStyle, setPrevStyle] = useState()
     const [buttonIcon, setButtonIcon] = useState()
+    const [borderToggle, setBorderToggle] = useState()
 
     const [fontDropDown, setFontDropDown] = useState(0)
 
@@ -63,6 +65,7 @@ function generateButton(){
         let b2 = Math.floor(Math.random() * 255);
         let a2 = 1
         theBorder = '2px solid ' + `rgba(${r2}, ${g2}, ${b2}, ${a2})`
+        setBorderToggle(true)
     }
 
 
@@ -185,6 +188,69 @@ function changeClass(path){
 }
 
 
+function changeFontWeight(){
+
+
+    let inputField = document.querySelector('.font-weight-input').value
+    inputField = parseInt(inputField)
+    
+    if(inputField >= 100){
+
+
+        let oldStyle = buttonStyles;
+        let newFontWeight = {
+            fontWeight: inputField
+        }
+    
+        let newObject = Object.assign({},oldStyle, newFontWeight)
+    
+    
+    
+        setButtonStyles(newObject)
+    
+
+    }
+
+}
+
+
+function borderSwitch(){
+
+    let oldStyle = buttonStyles;
+    let borderStyle = oldStyle.border
+    setPrevStyle(oldStyle)
+    let newObject
+
+    if(borderToggle === false){
+
+        let newBorder = {
+            border: prevStyle.border
+        }
+    
+        newObject = Object.assign({},oldStyle, newBorder)
+
+        
+    }
+
+    if(borderToggle === true){
+        let newBorder = {
+            border: '0px solid transparent'
+        }
+    
+        newObject = Object.assign({},oldStyle, newBorder)
+    
+        setBorderToggle(false)
+    }
+  
+  
+
+    setButtonStyles(newObject)
+
+    console.log(newObject)
+
+}
+
+
 
 
 
@@ -198,8 +264,13 @@ function changeClass(path){
             <h1>Button Font</h1>
             <div className="fonts-drop-down-container">
             <div className="selected-font" onClick={() => {if(fontDropDown === 0){setFontDropDown(1)} else{setFontDropDown(0)}}}>{buttonStyles.fontFamily}  <div className="drop-down-list">{renderDropDown()}</div></div>
-           
+           <h3>Font Weight</h3>
+           <input className="font-weight-input" onInput={changeFontWeight} defaultValue={buttonStyles.fontWeight}/>
             </div>
+
+
+            <h1>Border Styles</h1>
+            <div className="border-switch" onClick={borderSwitch}></div>
        
             <span>Before or After Text</span>
             <span> "Grid of icons to choose from"</span>
